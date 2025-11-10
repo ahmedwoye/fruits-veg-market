@@ -1,5 +1,7 @@
 # Fruits And Veg App
 
+![screenshot of app](ArchitecturalDesign.jpg)
+
 A simple app to show how a 2 Tier app works. A list of **fruits** and **vegetables**
 
 -**HTLM + JS** frontend (Tier 1) - fetches data
