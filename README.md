@@ -11,8 +11,10 @@ A simple app to show how a 2 Tier app works. A list of **fruits** and **vegetabl
 
 ## Frontend Requirement
 - install Nginx/HTTPD and deploy index.html file as required
+- install git to download repo
 
 ## Backend Python Requirements
+- Install git to download repo
 - ensure you have python 3 on the server
 - `python3 -m venv venv`  Setup required scripts 
 - Activate the Virtual environment `source venv\bin/activate`
