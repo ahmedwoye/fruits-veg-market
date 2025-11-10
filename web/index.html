@@ -1,0 +1,87 @@
+<!DOCTYPE html> 
+
+<head>
+    <meta charset="UTF-8">
+    <title>FRUIT PRICES</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+
+        table{
+            border-collapse: collapse;
+            width: 340px;
+            margin-top:10px;
+        }
+        th,td{
+            border: 1px solid #aaa;
+            padding: 8px;
+            text-align: left;
+        }
+        th{
+            background-color: #f0f0f0;
+        }
+        button{
+            padding: 8px 14px;
+            margin-bottom: 10px;
+            cursor:pointer;
+        }
+
+        #output {
+            margin-top:80px;
+            font-size: 14px;
+            color: #444;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Fruit List</h1>
+    <button id="loadfruits">Load Fruits</button>
+    <div id="output"></div>
+
+    <table id="fruitTable">
+        <thread>
+
+            <tr>
+                <th>Fruit</th>
+                <th>Price ($)</th>
+            </tr>
+        </thread>
+        <tbody ></tbody>
+    </table>
+
+    <script>
+
+        const apiUrl ="http://localhost:8000/fruits";
+        const out = document.getElementById("output");
+
+        document.getElementById("loadFruits").onclick = async () => {
+            out.textContent = "Loading...";
+            try{
+                const res = await fetch(apiUrl);
+                if (!res.ok) throw new Error('HTTP ${res.status}');
+                const data = await res.json();
+
+                const tbody = document.querySelector("#fruitTable tbody");
+                tbody.innerHTML = "";
+                (data.fruits || []).forEach(fruit => {
+                    const tr =  document.createElement("tr");
+                    const price = typeof fruit.price === "number" ? fruit.price.toFixed(2) : fruit.price;
+                    tr.innerHTML = '<td>${fruit.name}</td><td>${price}</td>';
+                    tbody.appendChild(tr);
+                });
+
+                out.textContent = "Loaded ";
+            }catch (err) {
+                out.textContent = 'Error: ${err.message}';
+                console.error(err);
+            }
+            };
+        
+    </script>
+</body>
+</html>
