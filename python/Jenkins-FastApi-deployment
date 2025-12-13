@@ -24,7 +24,7 @@ pipeline  {
                         python3 -m ven .venv;
                         source .venv/bin/activate;
                         python -m pip install -r requirements.txt;
-                        sudo cp fruits.service /etc/systemd/system/fruits.service;
+                        sudo cp fruit.service /etc/systemd/system/fruit.service;
                         sudo systemctl  daemon-reload;
                         sudo systemctl restart fruit.service;
                         sudo systemctl status fruit.service  '
