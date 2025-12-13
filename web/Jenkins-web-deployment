@@ -37,8 +37,6 @@ pipeline  {
                         cd ~; rm -rf fruits-veg-market ;
                         git clone https://github.com/ahmedwoye/fruits-veg-market.git;
                         cd fruits-veg-market;
-                        sed 's/FRUIT_MACHINE/${PYTHON_NODE}g'-i web/index.html;
-                        sed 's/VEG_MACHINE/${JAVA_NODE}g'-i web/index.html;
                         sudo cp web/index.html  /usr/share/nginx/html/ ' 
                     """
                 }
