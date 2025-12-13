@@ -34,9 +34,9 @@ pipeline  {
                         sudo yum install git -y; 
                         sudo yum install nginx -y;
                         sudo systemctl start nginx; 
-                        cd ~; rm -rf fruits-veg_market ;
+                        cd ~; rm -rf fruits-veg-market ;
                         git clone https://github.com/ahmedwoye/fruits-veg-market.git;
-                        cd fruits-veg_market;
+                        cd fruits-veg-market;
                         sed 's/FRUIT_MACHINE/${PYTHON_NODE}g'-i web/index.html;
                         sed 's/VEG_MACHINE/${JAVA_NODE}g'-i web/index.html;
                         sudo cp web/index.html  /usr/share/nginx/html/ ' 
