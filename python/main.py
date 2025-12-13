@@ -18,7 +18,12 @@ fruits =  [
     {"name" : "Banana", "price": 0.8},
     {"name" : "Pineapple", "price": 2.2},
     {"name" : "Cherry", "price": 1.2},
-    {"name" : "Mango", "price": 4.2}
+    {"name" : "Mango", "price": 4.2},
+    {"name" : "Orange", "price": 7.2},
+    {"name" : "kiwi", "price": 3.2},
+    {"name" : "Organic Cucumber", "price": 5.2},
+    {"name" : "Lime", "price": 6.2},
+    {"name" : "Bluberry", "price": 5.2},
 ]
 
 

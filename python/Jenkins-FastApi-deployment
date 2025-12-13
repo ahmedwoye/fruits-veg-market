@@ -1,0 +1,40 @@
+pipeline  {
+    agent any 
+
+    parameters {
+        string (
+            name: 'TARGET_IP',
+            defaultValue: '172.31.22.123',
+            description: 'Enter the target Ec2 IP address'
+        )
+    }
+    
+    stages {
+        
+        stage ('Install Packages   SSH') {
+            
+            steps {
+                sshagent (credentials: ['AWS-SSH-KEY']) {
+                    sh """
+                        ssh -o StrictHostKeyChecking=no  ec2-user@${TARGET_IP} '
+                        sudo yum install git -y; 
+                        cd ~; rm -rf fruits-veg_market ;
+                        git clone https://github.com/ahmedwoye/fruits-veg-market.git;
+                        cd fruits-veg_market;
+                        python3 -m ven .venv;
+                        source .venv/bin/activate;
+                        python -m pip install -r requirements.txt;
+                        sudo cp fruits.service /etc/systemd/system/fruits.service;
+                        sudo systemctl  daemon-reload;
+                        sudo systemctl restart fruit.service;
+                        sudo systemctl status fruit.service  '
+
+                      
+                    """
+                }
+
+            }
+        }
+    }
+}
+
