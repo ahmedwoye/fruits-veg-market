@@ -21,10 +21,10 @@ pipeline  {
                         sudo yum install git -y; 
                         sudo yum install java-17-amazon-corretto -y;
                         sudo yum install maven -y;
-                        cd ~; rm -rf fruits-veg_market ;
+                        cd ~; rm -rf fruits-veg-market ;
                         git clone https://github.com/ahmedwoye/fruits-veg-market.git;
-                        cd fruits-veg_market; 
-                        sudo cp fruits.service /etc/systemd/system/Vegetables.service;
+                        cd fruits-veg-market; 
+                        sudo cp Vegetables.service /etc/systemd/system/Vegetables.service;
                         sudo systemctl  daemon-reload;
                         sudo systemctl restart Vegetables.service;
                         sudo systemctl status Vegetables.service  ' 
